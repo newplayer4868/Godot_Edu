@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bh7ykx61otew8"]
+
+[ext_resource type="Script" uid="uid://cubm04mpdhfi1" path="res://player.gd" id="1_kne1u"]
+[ext_resource type="Texture2D" uid="uid://d35jknfm1phk6" path="res://icon.svg" id="1_kpjcp"]
+
+[node name="Node2D" type="Node2D" unique_id=492303868]
+script = ExtResource("1_kne1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1527432158]
+position = Vector2(62, -1)
+texture = ExtResource("1_kpjcp")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=2100329961]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -51.0
+offset_right = -14.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "2d 노드 생성
+sprite2d 자식
+label 자식 
+"
