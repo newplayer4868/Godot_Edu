@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
 	# 키가 눌려있다면 좌표 증감
 	#delta를 곱하면 기기 성능 따라 퍼포먼스 차이가 안일어난다고 함
-	
+	#delta는 현재 프레임과 이전 프레임 사이의 시간 
 	if Input.is_action_pressed("ui_right"):position.x += speed * delta
 	if Input.is_action_pressed("ui_left"):position.x -= speed * delta
 	if Input.is_action_pressed("ui_down"):position.y += speed * delta
