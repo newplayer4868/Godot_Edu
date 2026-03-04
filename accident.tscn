@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bfg2hdl0gf25j"]
+
+[ext_resource type="Script" uid="uid://bm1q82sqbwq0l" path="res://accident.gd" id="1_4m1wv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwc88"]
+
+[node name="accident" type="CharacterBody2D" unique_id=1276994189]
+collision_layer = 3
+script = ExtResource("1_4m1wv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1106786786]
+shape = SubResource("RectangleShape2D_kwc88")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=454197958]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0

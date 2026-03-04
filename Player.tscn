@@ -7,7 +7,7 @@
 script = ExtResource("1_kne1u")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1527432158]
-position = Vector2(62, -1)
+position = Vector2(493, -41)
 texture = ExtResource("1_kpjcp")
 
 [node name="Label" type="Label" parent="Sprite2D" unique_id=2100329961]
@@ -26,5 +26,3 @@ text = "2d 노드 생성
 sprite2d 자식
 label 자식 
 "
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1508856420]
