@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://f3bjd2j7kwnc"]
+
+[ext_resource type="PackedScene" uid="uid://vrjbbrpdasir" path="res://step1/Wall.tscn" id="1_5ruu0"]
+[ext_resource type="PackedScene" uid="uid://bfg2hdl0gf25j" path="res://step1/accident.tscn" id="2_4yox8"]
+[ext_resource type="PackedScene" uid="uid://b77pg8ejcttvh" path="res://step1/coin.tscn" id="3_sg5y1"]
+
+[node name="Node2D" type="Node2D" unique_id=1699013533]
+
+[node name="StaticBody2D" parent="." unique_id=395892313 instance=ExtResource("1_5ruu0")]
+position = Vector2(123, 327)
+
+[node name="accident" parent="." unique_id=1276994189 instance=ExtResource("2_4yox8")]
+position = Vector2(126, 241)
+
+[node name="Coin" parent="." unique_id=209695241 instance=ExtResource("3_sg5y1")]
+position = Vector2(230, 299)

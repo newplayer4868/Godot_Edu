@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://donpgylgdmsrw"]
 
-[ext_resource type="Script" uid="uid://dcet7ycgqthlu" path="res://animate_player.gd" id="1_481yp"]
+[ext_resource type="Script" uid="uid://dcet7ycgqthlu" path="res://step2/animate_player.gd" id="1_481yp"]
+[ext_resource type="Texture2D" uid="uid://d35jknfm1phk6" path="res://icon.svg" id="2_i3jvp"]
 
 [sub_resource type="Animation" id="Animation_481yp"]
 length = 0.001
@@ -43,3 +44,7 @@ script = ExtResource("1_481yp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=978657814]
 libraries/ = SubResource("AnimationLibrary_481yp")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=414701973]
+position = Vector2(285, 147)
+texture = ExtResource("2_i3jvp")

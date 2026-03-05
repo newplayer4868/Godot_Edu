@@ -3,20 +3,22 @@ extends Sprite2D
 
 @onready var animation_player = $AnimationPlayer
 # 애니메이션 플레이어 변수를 선언하고 이건 노드 중에 애니메이션 플레이어를 지칭하는것
-##@onready
-#Node가 준비되면 다음 속성을 할당된 것으로 표시합니다. 
-#이러한 속성에 대한 값은 노드가 초기화될 때(Object._init()) 즉시 할당되지 않고, 
-#대신 Node._ready() 직전에 계산되어 저장됩니다.
-#@onready var character_name = $Label
-
-func _ready():    
-	#노드가 가진 fade in을 플레이하
-	animation_player.play("fade_in") #애라니메이션 페이드 인이라고 생성했음 
+func _ready():
+	# 애니메이션 실행
+	animation_player.play("fade_in")
+	#play가 끝나면 animation finisher라는 신호가 가는듯? 애니 종료 되야 다음 명령 수행한다
+	await animation_player.animation_finished
+	
+	print("애니메이션이 완전히 끝났습니다. 이제 다음 작업을 수행합니다.")
+	print("사라집니다!")
+	animation_player.play_backwards("fade_in") # 역재생
+	#노드가 가진 fade in을 플레이하라
+	#애라니메이션 페이드 인이라고 생성했음 
 	#하단 노드 애니메이션 플레이어 하면 하단에 무슨 영상 편집 툴같은 ui 뜨고 거기서 애니메이션 생성, 
 	#sprite 2d 속성 중 visibility에서 modulate 옆의 열솨 모양 골라서 생성함 1초 부분 사각형
 	#그리고 midulate 클릭 후 하단 속성 중 A(투명도)가 있어서 그거 0으로 해서 투명하게 설정함 그걸 또 key 눌러서 생성했음
 	#그레ㅐ서 애니 바에 투명~진한 박스 2개 생성 배치하니까 0~>1로 변하게 애니메이션이 설정됨
-	print("애니메이션 시작!")
+	
 	#
 	 #void play(name: StringName = &"", custom_blend: float = -1, custom_speed: float = 1.0, from_end: bool = false)
 #	#.play 함수에 대한 설명 name,

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://du4qnkw3f71ti"]
+
+[ext_resource type="Script" uid="uid://dip3vl2lp8ssw" path="res://step2/animate_player_toggle.gd" id="1_w7tcn"]
+[ext_resource type="Texture2D" uid="uid://d35jknfm1phk6" path="res://icon.svg" id="2_u08yu"]
+
+[sub_resource type="Animation" id="Animation_481yp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h6066"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_481yp"]
+_data = {
+&"RESET": SubResource("Animation_481yp"),
+&"fade_in": SubResource("Animation_h6066")
+}
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1459623672]
+script = ExtResource("1_w7tcn")
+
+[node name="AnimationPlayerToggle" type="AnimationPlayer" parent="." unique_id=978657814]
+libraries/ = SubResource("AnimationLibrary_481yp")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=414701973]
+position = Vector2(285, 147)
+texture = ExtResource("2_u08yu")
