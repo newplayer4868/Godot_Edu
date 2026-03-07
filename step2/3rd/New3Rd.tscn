@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bq71s23sxwex0"]
+
+[ext_resource type="Script" uid="uid://ncbcc4uep5j3" path="res://step2/3rd/new_3_rd.gd" id="1_2nup5"]
+[ext_resource type="Texture2D" uid="uid://d35jknfm1phk6" path="res://icon.svg" id="1_ahxck"]
+
+[node name="New3Rd" type="Camera2D" unique_id=337285533]
+script = ExtResource("1_2nup5")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=97470962]
+texture = ExtResource("1_ahxck")
