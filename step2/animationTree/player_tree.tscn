@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://d35jknfm1phk6" path="res://icon.svg" id="2_a00md"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tckoy"]
-animation = &"Attack"
+animation = &"Tutorial/Attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rq8y6"]
-animation = &"Idle"
+animation = &"Tutorial/Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w6olr"]
-animation = &"Move"
+animation = &"Tutorial/Move"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aexyw"]
 advance_mode = 2
@@ -38,53 +38,10 @@ states/Move/position = Vector2(442, 37)
 states/Start/position = Vector2(62, 85)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_aexyw"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_mfnmq"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_5mbs0"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_3wayr"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_jt87a")]
 
-[sub_resource type="Animation" id="Animation_bck4s"]
-resource_name = "attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 10)]
-}
-
-[sub_resource type="Animation" id="Animation_hiwi8"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mfnmq"]
-resource_name = "move"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(10, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_tckoy"]
+resource_name = "RESET"
 length = 0.001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,9 +54,65 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
-[sub_resource type="Animation" id="Animation_aexyw"]
-resource_name = "fade_in"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5mbs0"]
+_data = {
+&"RESET": SubResource("Animation_tckoy")
+}
+
+[sub_resource type="Animation" id="Animation_a00md"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.35801348083709]
+}
+
+[sub_resource type="Animation" id="Animation_w6olr"]
+resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,14 +126,29 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5mbs0"]
-_data = {
-&"Attack": SubResource("Animation_bck4s"),
-&"Idle": SubResource("Animation_hiwi8"),
-&"Move": SubResource("Animation_mfnmq"),
-&"RESET": SubResource("Animation_tckoy"),
-&"fade_in": SubResource("Animation_aexyw")
+[sub_resource type="Animation" id="Animation_hiwi8"]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a00md"]
+_data = {
+&"Attack": SubResource("Animation_a00md"),
+&"Idle": SubResource("Animation_w6olr"),
+&"Move": SubResource("Animation_hiwi8")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hiwi8"]
 
 [node name="PlayerTree" type="Node2D" unique_id=746480996]
 script = ExtResource("1_hiwi8")
@@ -132,6 +160,8 @@ anim_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree" unique_id=1214505503]
 libraries/ = SubResource("AnimationLibrary_5mbs0")
+libraries/Tutorial = SubResource("AnimationLibrary_a00md")
+libraries/blend = SubResource("AnimationLibrary_hiwi8")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1590154285]
 position = Vector2(67, 65)

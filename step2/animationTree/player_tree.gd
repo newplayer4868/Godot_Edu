@@ -8,7 +8,7 @@ func _input(event):
 	#클릭 받았으면
 	if event.is_action_pressed("click"):
 		print("click")
-		# 현재 상태 머신의 상태를 확인합니다.
+		# 현재 상태는 현재 상태머신 노드로 설
 		var current_state = state_machine.get_current_node()
 		
 		#현재 상태가 어택이 아니면
@@ -17,17 +17,18 @@ func _input(event):
 			#어택 명령 수행해라
 			
 func _physics_process(delta):
-	# 1. 공격 중이면 이동 로직을 아예 무시합니다.
+	#지금 상태 어택이면 무시하고
 	if state_machine.get_current_node() == "Attack":
 		return
 
 	var direction = Input.get_axis("ui_left", "ui_right")
+	#방향키 입력 받고
 	var current_state = state_machine.get_current_node()
-	
+	#현재 노드도 확인해
 	# 2. 이동/대기 전환 시: "지금 그 상태가 아닐 때만" 명령을 내립니다!
-	if direction != 0:
-		if current_state != "Move": # 이미 Move 중이면 명령하지 않음
-			state_machine.travel("Move")
+	if direction != 0: #정지 상태가 아니면,
+		if current_state != "Move": #그리고 지금 이동 중이 아니면
+			state_machine.travel("Move") #이동해
 	else:
-		if current_state != "Idle": # 이미 Idle 중이면 명령하지 않음
-			state_machine.travel("Idle")
+		if current_state != "Idle": #정지 중이 아니면
+			state_machine.travel("Idle")#정지해
