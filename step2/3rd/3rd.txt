@@ -1,1 +1,9 @@
 camer node를 통해 0,0을 중앙으로 두는 시야 설정 
+
+애니메이션 생성으로 idle 상하좌우 이동키 넣음
+
+animation tree에서 anim player로 amimation player 지목했고
+트리 루트로 상태 머신 지목
+프로세스를 idle에서 피지컬로 지목했는데 의미는 모름
+
+애니메이션 tree에서 블랜더 2d 생성하고 안에 좌표에서 이동 방향에 맞는 곳에 애니 삽입 0,0에는 idle
