@@ -159,6 +159,7 @@ tree_root = SubResource("AnimationNodeStateMachine_a00md")
 anim_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree" unique_id=1214505503]
+callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_5mbs0")
 libraries/Tutorial = SubResource("AnimationLibrary_a00md")
 libraries/blend = SubResource("AnimationLibrary_hiwi8")

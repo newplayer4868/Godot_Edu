@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ptojgr776c0u"]
+
+[ext_resource type="Script" uid="uid://217m4koyppd6" path="res://step2/round4/round.gd" id="1_s80pf"]
+[ext_resource type="Texture2D" uid="uid://d35jknfm1phk6" path="res://icon.svg" id="2_kvk4y"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ep6lj"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f2nbb"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6iv1h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ihdjt"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5e22"]
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bpfoj"]
+states/Idle/node = SubResource("AnimationNodeAnimation_ep6lj")
+states/Idle/position = Vector2(337, 100)
+states/Move/node = SubResource("AnimationNodeAnimation_f2nbb")
+states/Move/position = Vector2(469, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6iv1h"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_ihdjt"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_y5e22")]
+
+[sub_resource type="Animation" id="Animation_inpno"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_fp4rn"]
+resource_name = "Move"
+
+[sub_resource type="Animation" id="Animation_24h4x"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fny20"]
+_data = {
+&"Idle": SubResource("Animation_inpno"),
+&"Move": SubResource("Animation_fp4rn"),
+&"RESET": SubResource("Animation_24h4x")
+}
+
+[node name="Round" type="Node2D" unique_id=940010380]
+script = ExtResource("1_s80pf")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=526497647]
+position = Vector2(253, 123)
+texture = ExtResource("2_kvk4y")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=92259070]
+
+[node name="Label" type="Label" parent="." unique_id=377918094]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=769822261]
+tree_root = SubResource("AnimationNodeStateMachine_bpfoj")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree" unique_id=14761149]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_fny20")
