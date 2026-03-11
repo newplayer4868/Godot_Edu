@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://fowgo5j014ve"]
+
+[ext_resource type="Script" uid="uid://btcqhg3he41yk" path="res://Vibe/TSCN/main.gd" id="1_bd2md"]
+[ext_resource type="PackedScene" uid="uid://0gc5a1wa0nws" path="res://Vibe/TSCN/Player.tscn" id="2_774mv"]
+[ext_resource type="PackedScene" uid="uid://i3bshphupfai" path="res://Vibe/TSCN/Laser.tscn" id="3_gc3wa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_774mv"]
+
+[node name="Main" type="Area2D" unique_id=443106837]
+script = ExtResource("1_bd2md")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1348019462]
+
+[node name="ScoreTimer" type="Timer" parent="." unique_id=1938001757]
+
+[node name="Player" parent="." unique_id=846294403 instance=ExtResource("2_774mv")]
+position = Vector2(0, -35)
+
+[node name="ScoreLabel" type="Label" parent="Player" unique_id=851571773]
+z_index = 100
+offset_left = 157.0
+offset_top = -22.0
+offset_right = 405.0
+offset_bottom = 97.0
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+label_settings = SubResource("LabelSettings_774mv")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=87168214]
+
+[node name="Laser" parent="." unique_id=1254814615 instance=ExtResource("3_gc3wa")]
+position = Vector2(-749, -314)

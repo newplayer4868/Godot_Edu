@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://0gc5a1wa0nws"]
+
+[ext_resource type="Script" uid="uid://dcfo8kypdx2do" path="res://Vibe/TSCN/player.gd" id="1_pmt0c"]
+[ext_resource type="Texture2D" uid="uid://crjh51yvftld8" path="res://Vibe/Sprite/player_sheet.png" id="2_idcpc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d65ab"]
+atlas = ExtResource("2_idcpc")
+region = Rect2(768, 512, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tru1q"]
+atlas = ExtResource("2_idcpc")
+region = Rect2(768, 512, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fg7p"]
+atlas = ExtResource("2_idcpc")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uugrk"]
+atlas = ExtResource("2_idcpc")
+region = Rect2(768, 128, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olpxf"]
+atlas = ExtResource("2_idcpc")
+region = Rect2(768, 0, 96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66umu"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d65ab")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tru1q")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fg7p")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uugrk")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olpxf")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idcpc"]
+radius = 17.0
+
+[node name="Player" type="CharacterBody2D" unique_id=846294403]
+script = ExtResource("1_pmt0c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1980793241]
+sprite_frames = SubResource("SpriteFrames_66umu")
+animation = &"Up"
+frame_progress = 0.5350266
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=774165146]
+position = Vector2(0, 29)
+shape = SubResource("CircleShape2D_idcpc")

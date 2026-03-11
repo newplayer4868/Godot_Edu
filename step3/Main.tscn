@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://csdipwpyx50i0"]
+
+[ext_resource type="Script" uid="uid://dvw7ashfnbg4" path="res://step3/player.gd" id="1_n4g5i"]
+[ext_resource type="Script" uid="uid://brnsp70s31tn0" path="res://step3/coin.gd" id="2_53l0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53l0k"]
+size = Vector2(137, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53l0k"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2slur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhxxw"]
+
+[node name="Main" type="Node2D" unique_id=957896304]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1095075097]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=2052986996]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=882320970]
+position = Vector2(1, 60)
+shape = SubResource("RectangleShape2D_53l0k")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=394907389]
+offset_left = -68.0
+offset_top = 50.0
+offset_right = 70.0
+offset_bottom = 69.0
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1391429598]
+script = ExtResource("1_n4g5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=54595752]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1450484041]
+shape = SubResource("CircleShape2D_53l0k")
+
+[node name="AnimationTree" type="AnimationTree" parent="Player" unique_id=1163617815]
+tree_root = SubResource("AnimationNodeStateMachine_2slur")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/AnimationTree" unique_id=889750900]
+root_node = NodePath("../..")
+
+[node name="ColorRect" type="ColorRect" parent="Player" unique_id=2112990202]
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+
+[node name="Coin" type="Area2D" parent="." unique_id=490685695]
+script = ExtResource("2_53l0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin" unique_id=154880661]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=1752404609]
+position = Vector2(53, 22)
+shape = SubResource("CircleShape2D_jhxxw")
+debug_color = Color(0.53090453, 0.5656417, 0.22875932, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="Coin" unique_id=1552915371]
+offset_left = 46.0
+offset_top = 16.0
+offset_right = 59.0
+offset_bottom = 30.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1865228705]
+
+[node name="Label" type="Label" parent="UI" unique_id=1814165053]
+offset_left = 100.0
+offset_top = -84.0
+offset_right = 157.0
+offset_bottom = -35.0
+text = "Score:0
+"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2143758533]

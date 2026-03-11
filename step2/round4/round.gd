@@ -1,21 +1,37 @@
 extends Node2D
 
-# [수정] 노드 이름이 소문자라면 경로도 소문자로 맞춰야 하네!
-# 만약 씬 트리에서 이름이 'icon'이라면 $icon으로 적어야 하네.
-@onready var icon = $Icon       # 자네의 실제 노드 이름 확인!
-@onready var label = $Label     # 아이콘의 자식이 아니라면 바로 $label
-@onready var anim_tree = $AnimationTree # 노드 이름 확인 필수
+#대충 파일들 할당되는 객체들이고
+#근데 아직도 onreadt 이해 못함
+@onready var icon = $Icon      
+@onready var label = $Label    
+@onready var anim_tree = $AnimationTree 
 
 var active_tween: Tween
+#Tween 근데 이건 왜 이렇게 선언하지
+#Lightweight object  가벼운 오브젝트라는데
+#used for general-purpose animation via script, using Tweeners.
+#애니메이션 실행하는 가벼운 객체인듯?
 
-# [수정] 사용하지 않는 delta 앞에 _를 붙여 경고를 없애게나.
+#Tweens are mostly useful for animations 애니 쓰는데 가장 유용하다는데?
+#requiring a numerical property to be interpolated over a range of values. 
+#누메릭은 무엇인가
+
+#The name tween comes from in-betweening,
+# an animation technique where you specify keyframes
+# and the computer interpolates the frames that appear between them. 
+
+#Animating something with a Tween is called tweening.
+#tween으로 하는 애니메이팅을 트위닝이라고 한다
+
+
+
+
 func _process(_delta):
 	var playback = anim_tree.get("parameters/playback")
 	if not playback: return
 	
 	var current_node = playback.get_current_node()
 	
-	# [에러 지점] label이 null이면 여기서 터지네. 위 @onready 경로가 중요하네!
 	if label:
 		label.text = "State: " + str(current_node)
 
@@ -37,7 +53,18 @@ func _play_move_juice(vec: Vector2):
 	active_tween.set_parallel(true)
 	
 	# 위치 이동
-	active_tween.tween_property(icon, "position", icon.position + (vec * 100), 0.4)\
+	#tween_property(
+	#object: Object, 
+	#property: NodePath, 
+	#final_val: Variant, 
+	#duration: float)
+#아니 트윈 이거 명령어가 개많은데
+	
+	active_tween.tween_property(
+		icon, 
+		"position", 
+		icon.position + (vec * 100), 
+		0.4)\
 		.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	
 	# 스쿼시 (옆으로 찌그러짐)
